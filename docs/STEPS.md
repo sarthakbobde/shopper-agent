@@ -8,7 +8,7 @@ Stopping after Phase 2 still leaves a complete project; voice and the second cli
 
 ## Phase 0 — Foundations
 - [x] 🤖 **00 Scaffold** — uv package, `shopper` CLI, `shopper doctor`, paths, config, tests, ruff, CI.
-- [ ] 🧑 **01 Gemini key and first call** — create the key in Google AI Studio, put it in `.env`, pick the model (ADR-009), one test call.
+- [x] 🧑 **01 Gemini key and first call** — create the key in Google AI Studio, put it in `.env`, pick the model (ADR-009), one test call.
 
 ## Phase 1 — Text agent (the Copilot Studio rebuild)
 - [ ] 🤝 **02 Data and seed** — SQLite schema, fake Indian retail seed data, fuzzy product search.

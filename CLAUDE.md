@@ -23,7 +23,10 @@ Set up in Step 00: `uv sync`, `uv run pytest -q`, `uv run ruff check src tests`,
 
 ## Rules
 
-- **Before adding or changing any code, say what you plan to do and why, and wait for my OK.**
+- **Before adding or changing any code, show the plan and wait for my OK.** Format: one section per
+  file (path, new or existing); under it a table of every function, type and test in that file
+  with "What it does" and "Why". Then one line for files that change without new functions
+  (`pyproject.toml`, `uv.lock`, configs, docs).
 - Ask before anything paid, with the estimated cost. Ask before any download, with source and size.
 - Never commit `.env`, keys, databases, audio, model weights or `data/`.
 - Only fake data while on the free-tier key (ADR-008).

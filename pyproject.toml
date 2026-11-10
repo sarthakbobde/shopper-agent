@@ -8,6 +8,7 @@ dependencies = [
     "pyyaml>=6.0",
     # reads .env so the Gemini key never has to be typed into the shell
     "python-dotenv>=1.0",
+    "google-genai>=3.0.0",
 ]
 
 [project.scripts]

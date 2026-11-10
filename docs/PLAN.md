@@ -208,3 +208,9 @@ Filled in as steps finish.
 - **Step 00:** strict config validation (`extra="forbid"`) earns its place immediately: a test shows a
   misspelt key (`tool:` for `tools:`) is rejected instead of silently ignored, which is exactly the
   kind of mistake that made the Copilot Studio version's rules drift.
+- **Step 01:** a model in the list is not necessarily usable (`gemini-2.5-flash` returns 404 for
+  new keys), so `ping` is the real check. "Thinking" models cost latency and output tokens even on
+  trivial questions: 3.8-flash took 2.8 s and 74 output tokens where 3.5-flash-lite took 1.4 s and
+  18. Since a tool turn needs two model calls, the voice latency budget decides the model more than
+  benchmark quality does (ADR-009). Also: put secrets in `.env`, never in `.env.example`, which git
+  tracks.

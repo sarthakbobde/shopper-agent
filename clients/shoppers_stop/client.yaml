@@ -16,7 +16,7 @@ tools:
   - escalate_to_human
 
 llm:
-  model: ""  # chosen in Step 01 from the models the key can see (ADR-009)
+  model: gemini-3.5-flash-lite  # fastest model that passes; re-checked in Step 05 (ADR-009)
   max_tool_rounds: 5
 
 webhook_url: null  # mock CRM receiver, Step 07
