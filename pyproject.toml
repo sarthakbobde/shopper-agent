@@ -1,0 +1,40 @@
+[project]
+name = "shopper-agent"
+version = "0.1.0"
+description = "A Shoppers Stop retail assistant on Gemini: text and voice, with ingestion, webhooks and analytics."
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    # reads .env so the Gemini key never has to be typed into the shell
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+shopper = "shopper.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shopper"]
+
+[dependency-groups]
+# Dev-only tools: installed by `uv sync`, not part of the package.
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I import order, B likely bugs, UP modern syntax
+select = ["E", "W", "F", "I", "B", "UP"]

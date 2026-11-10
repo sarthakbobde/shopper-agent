@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# secrets never go in git; .env.example shows the names
+.env
+
+# databases, data drops, audio, model weights and run output
+*.db
+data/*
+!data/.gitkeep
+models/
+*.wav
+*.flac
+evals/runs/
