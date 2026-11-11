@@ -7,6 +7,7 @@ client configs). The verdicts are what the tests cover, so tests never need a re
 A verdict starts with "ok" when the check passes. The key itself is never printed.
 """
 
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from dotenv import dotenv_values
 
 from shopper import paths
 from shopper.config import list_clients, load_client
+from shopper.db import connect, count_rows
 from shopper.errors import UserError
 
 KEY_NAME = "GEMINI_API_KEY"
@@ -47,6 +49,24 @@ def client_verdict(name: str) -> str:
     return f"ok ({client.name}, {len(client.tools)} tools, {model})"
 
 
+def db_verdict(counts: dict[str, int] | None, client: str) -> str:
+    if counts is None:
+        return f"not created; run `shopper seed --client {client}`"
+    parts = [f"{counts[table]} {table}" for table in ["customers", "products", "feedback"]]
+    return f"ok ({', '.join(parts)})"
+
+
+def read_db_counts(client: str) -> dict[str, int] | None:
+    db_file = paths.client_db_file(client)
+    if not db_file.is_file():
+        return None
+    conn = connect(db_file)
+    try:
+        return count_rows(conn)
+    finally:
+        conn.close()
+
+
 def run_doctor(env_file: Path = paths.ENV_FILE) -> list[tuple[str, str]]:
     results = []
     results.append(("python", python_verdict(sys.version_info[:2])))
@@ -60,5 +80,10 @@ def run_doctor(env_file: Path = paths.ENV_FILE) -> list[tuple[str, str]]:
         results.append(("clients", "none found in clients/"))
     for name in clients:
         results.append((f"client {name}", client_verdict(name)))
+        try:
+            counts = read_db_counts(name)
+            results.append((f"database {name}", db_verdict(counts, name)))
+        except sqlite3.Error as error:
+            results.append((f"database {name}", f"unreadable: {error}"))
 
     return results

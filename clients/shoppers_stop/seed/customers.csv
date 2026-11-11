@@ -1,0 +1,51 @@
+customer_id,name,email,city,age_group,preferred_category,total_spend_paise
+C0001,Arjun Sharma,arjun.sharma@example.com,Hyderabad,25-34,Women's Wear,299900
+C0002,Sneha Desai,sneha.desai@example.com,Delhi,55+,Men's Wear,300000
+C0003,Riya Gupta,riya.gupta@example.com,Mumbai,18-24,Men's Wear,1000000
+C0004,Kavya Iyer,kavya.iyer@example.com,Jaipur,55+,Men's Wear,1000100
+C0005,Nikhil Iyer,nikhil.iyer@example.com,Kolkata,25-34,Footwear,3591300
+C0006,Riya Reddy,riya.reddy@example.com,Bengaluru,45-54,Kids,62500
+C0007,Isha Patel,isha.patel@example.com,Chennai,18-24,Men's Wear,1431000
+C0008,Pooja Shah,pooja.shah@example.com,Chennai,55+,Kids,2372600
+C0009,Rahul Desai,rahul.desai@example.com,Jaipur,18-24,Footwear,3030800
+C0010,Ananya Kulkarni,ananya.kulkarni@example.com,Lucknow,35-44,Beauty,1941300
+C0011,Kavya Desai,kavya.desai@example.com,Mumbai,25-34,Home,475800
+C0012,Aditya Shah,aditya.shah@example.com,Delhi,45-54,Kids,1545600
+C0013,Neha Singh,neha.singh@example.com,Bengaluru,35-44,Kids,2410900
+C0014,Kavya Singh,kavya.singh@example.com,Delhi,55+,Accessories,1769600
+C0015,Vikram Kulkarni,vikram.kulkarni@example.com,Bengaluru,45-54,Footwear,1624300
+C0016,Isha Menon,isha.menon@example.com,Pune,35-44,Home,3670000
+C0017,Rahul Iyer,rahul.iyer@example.com,Chennai,45-54,Kids,230300
+C0018,Ananya Iyer,ananya.iyer@example.com,Chennai,25-34,Accessories,3737000
+C0019,Amit Gupta,amit.gupta@example.com,Bengaluru,35-44,Women's Wear,3027100
+C0020,Rohan Desai,rohan.desai@example.com,Jaipur,35-44,Accessories,3698900
+C0021,Riya Gupta,riya.gupta2@example.com,Kolkata,35-44,Women's Wear,3844200
+C0022,Sneha Kulkarni,sneha.kulkarni@example.com,Delhi,18-24,Home,3254300
+C0023,Arjun Patel,arjun.patel@example.com,Kolkata,55+,Men's Wear,1068400
+C0024,Pooja Gupta,pooja.gupta@example.com,Ahmedabad,55+,Kids,3925200
+C0025,Nikhil Joshi,nikhil.joshi@example.com,Delhi,55+,Home,95200
+C0026,Isha Rao,isha.rao@example.com,Delhi,35-44,Footwear,2249300
+C0027,Vikram Mehta,vikram.mehta@example.com,Hyderabad,55+,Home,41200
+C0028,Vikram Kulkarni,vikram.kulkarni2@example.com,Hyderabad,55+,Beauty,717300
+C0029,Kavya Patel,kavya.patel@example.com,Bengaluru,55+,Home,2470400
+C0030,Divya Menon,divya.menon@example.com,Lucknow,35-44,Footwear,23700
+C0031,Priya Shah,priya.shah@example.com,Hyderabad,25-34,Men's Wear,2398800
+C0032,Rohan Menon,rohan.menon@example.com,Delhi,18-24,Accessories,3738200
+C0033,Amit Joshi,amit.joshi@example.com,Jaipur,25-34,Women's Wear,473500
+C0034,Amit Kulkarni,amit.kulkarni@example.com,Hyderabad,55+,Home,1102100
+C0035,Varun Gupta,varun.gupta@example.com,Jaipur,25-34,Accessories,1408000
+C0036,Aditya Gupta,aditya.gupta@example.com,Ahmedabad,55+,Footwear,2467200
+C0037,Arjun Iyer,arjun.iyer@example.com,Delhi,35-44,Men's Wear,1492500
+C0038,Riya Kulkarni,riya.kulkarni@example.com,Lucknow,25-34,Men's Wear,1528000
+C0039,Ananya Desai,ananya.desai@example.com,Pune,18-24,Men's Wear,405800
+C0040,Meera Shah,meera.shah@example.com,Pune,35-44,Accessories,3389500
+C0041,Amit Iyer,amit.iyer@example.com,Bengaluru,55+,Beauty,3553900
+C0042,Amit Iyer,amit.iyer2@example.com,Kolkata,25-34,Men's Wear,3119600
+C0043,Arjun Singh,arjun.singh@example.com,Chennai,45-54,Footwear,2844900
+C0044,Neha Joshi,neha.joshi@example.com,Delhi,18-24,Footwear,375000
+C0045,Meera Rao,meera.rao@example.com,Pune,25-34,Women's Wear,736100
+C0046,Nikhil Mehta,nikhil.mehta@example.com,Kolkata,25-34,Kids,938600
+C0047,Neha Iyer,neha.iyer@example.com,Ahmedabad,55+,Men's Wear,514000
+C0048,Rahul Singh,rahul.singh@example.com,Mumbai,18-24,Home,3562700
+C0049,Rohan Patel,rohan.patel@example.com,Ahmedabad,45-54,Women's Wear,2683400
+C0050,Pooja Menon,pooja.menon@example.com,Bengaluru,45-54,Men's Wear,404200

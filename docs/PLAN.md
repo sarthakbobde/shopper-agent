@@ -214,3 +214,8 @@ Filled in as steps finish.
   18. Since a tool turn needs two model calls, the voice latency budget decides the model more than
   benchmark quality does (ADR-009). Also: put secrets in `.env`, never in `.env.example`, which git
   tracks.
+- **Step 02:** "every word must match" keeps results precise ("blue jeans" never returns red
+  jeans), but a query for something that does not exist ("red linen kurta") returns nothing, where a
+  shopper would rather see close matches. Step 03's `search_products` tool should fall back to fewer
+  words and say the results are near matches. Normalising text to letters and digits handled case,
+  spaces and hyphens in one place and, as a side effect, made LIKE wildcards (`%`, `_`) impossible.

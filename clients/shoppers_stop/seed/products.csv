@@ -1,0 +1,201 @@
+product_id,code,name,brand,category,price_paise,stock_qty
+P0001,SS-FTW-0001,Beige Loafers,Indigo Row,Footwear,339900,94
+P0002,SS-WMN-0001,Green Linen Saree,Urbano,Women's Wear,889900,0
+P0003,SS-ACC-0001,Blue Watch,Tara Lane,Accessories,139900,65
+P0004,SS-MEN-0001,Black Linen Kurta,Northline,Men's Wear,139900,87
+P0005,SS-FTW-0002,Grey Sneakers,Kesari,Footwear,309900,6
+P0006,SS-FTW-0003,Grey Running Shoes,Northline,Footwear,529900,34
+P0007,SS-ACC-0002,Red Watch,Saanjh,Accessories,489900,86
+P0008,SS-FTW-0004,Black Loafers,Kesari,Footwear,109900,73
+P0009,SS-MEN-0002,Red Rayon Kurta,Kesari,Men's Wear,299900,45
+P0010,SS-WMN-0002,Green Linen Dress,Saanjh,Women's Wear,449900,91
+P0011,SS-BTY-0001,Pink Lipstick,Tara Lane,Beauty,149900,14
+P0012,SS-KID-0001,Black Rayon T-Shirt,Northline,Kids,79900,78
+P0013,SS-ACC-0003,Red Watch,Urbano,Accessories,489900,33
+P0014,SS-MEN-0003,Maroon Denim Blazer,Tara Lane,Men's Wear,119900,0
+P0015,SS-ACC-0004,White Watch,Urbano,Accessories,779900,55
+P0016,SS-MEN-0004,White Rayon Shirt,Tara Lane,Men's Wear,109900,75
+P0017,SS-FTW-0005,Blue Sandals,Urbano,Footwear,359900,120
+P0018,SS-KID-0002,Red Cotton Shorts,Coastal Thread,Kids,119900,114
+P0019,SS-BTY-0002,Red Face Wash,Tara Lane,Beauty,99900,104
+P0020,SS-FTW-0006,White Sneakers,Northline,Footwear,379900,53
+P0021,SS-KID-0003,Black Silk Shorts,Northline,Kids,49900,29
+P0022,SS-HOM-0001,Navy Mug Set,Northline,Home,169900,112
+P0023,SS-WMN-0003,Red Silk Kurta,Saanjh,Women's Wear,359900,9
+P0024,SS-KID-0004,Pink Denim Hoodie,Tara Lane,Kids,49900,34
+P0025,SS-BTY-0003,Blue Perfume,Brightloom,Beauty,69900,45
+P0026,SS-FTW-0007,Pink Running Shoes,Northline,Footwear,199900,74
+P0027,SS-KID-0005,Maroon Cotton T-Shirt,Northline,Kids,149900,69
+P0028,SS-KID-0006,Black Denim Hoodie,Kesari,Kids,169900,109
+P0029,SS-ACC-0005,Pink Watch,Coastal Thread,Accessories,559900,42
+P0030,SS-ACC-0006,Pink Watch,Coastal Thread,Accessories,259900,86
+P0031,SS-ACC-0007,Grey Wallet,Urbano,Accessories,989900,71
+P0032,SS-KID-0007,Red Silk Frock,Indigo Row,Kids,159900,42
+P0033,SS-FTW-0008,Red Heels,Tara Lane,Footwear,519900,116
+P0034,SS-ACC-0008,Green Handbag,Brightloom,Accessories,899900,80
+P0035,SS-MEN-0005,Green Linen T-Shirt,Northline,Men's Wear,249900,6
+P0036,SS-FTW-0009,Black Running Shoes,Northline,Footwear,479900,81
+P0037,SS-ACC-0009,Beige Sunglasses,Urbano,Accessories,709900,84
+P0038,SS-HOM-0002,Maroon Bedsheet,Indigo Row,Home,129900,90
+P0039,SS-MEN-0006,Red Cotton Kurta,Brightloom,Men's Wear,459900,60
+P0040,SS-HOM-0003,Grey Mug Set,Coastal Thread,Home,379900,65
+P0041,SS-HOM-0004,White Mug Set,Saanjh,Home,349900,58
+P0042,SS-HOM-0005,Green Cushion Cover,Northline,Home,359900,63
+P0043,SS-KID-0008,Black Denim Hoodie,Kesari,Kids,89900,41
+P0044,SS-WMN-0004,Red Silk Saree,Kesari,Women's Wear,659900,28
+P0045,SS-FTW-0010,Navy Heels,Northline,Footwear,549900,8
+P0046,SS-HOM-0006,Maroon Mug Set,Urbano,Home,359900,90
+P0047,SS-HOM-0007,Beige Mug Set,Coastal Thread,Home,49900,39
+P0048,SS-HOM-0008,Pink Mug Set,Northline,Home,349900,103
+P0049,SS-FTW-0011,Green Sandals,Brightloom,Footwear,459900,50
+P0050,SS-ACC-0010,White Sunglasses,Urbano,Accessories,819900,80
+P0051,SS-FTW-0012,Grey Running Shoes,Coastal Thread,Footwear,649900,0
+P0052,SS-WMN-0005,White Cotton Top,Indigo Row,Women's Wear,309900,28
+P0053,SS-KID-0009,Maroon Denim Frock,Saanjh,Kids,199900,54
+P0054,SS-HOM-0009,Beige Bedsheet,Brightloom,Home,49900,7
+P0055,SS-WMN-0006,Black Cotton Palazzo,Northline,Women's Wear,709900,0
+P0056,SS-WMN-0007,Grey Linen Kurta,Kesari,Women's Wear,289900,86
+P0057,SS-BTY-0004,Beige Face Wash,Tara Lane,Beauty,319900,48
+P0058,SS-BTY-0005,White Lipstick,Saanjh,Beauty,159900,4
+P0059,SS-BTY-0006,Maroon Moisturiser,Northline,Beauty,319900,76
+P0060,SS-MEN-0007,Green Rayon Blazer,Urbano,Men's Wear,179900,73
+P0061,SS-KID-0010,Navy Cotton Hoodie,Coastal Thread,Kids,149900,2
+P0062,SS-HOM-0010,Black Mug Set,Indigo Row,Home,219900,82
+P0063,SS-ACC-0011,Maroon Wallet,Saanjh,Accessories,339900,84
+P0064,SS-BTY-0007,Beige Moisturiser,Saanjh,Beauty,209900,76
+P0065,SS-KID-0011,Black Denim Shorts,Coastal Thread,Kids,139900,60
+P0066,SS-KID-0012,Beige Denim T-Shirt,Saanjh,Kids,79900,46
+P0067,SS-KID-0013,Grey Denim Frock,Northline,Kids,159900,0
+P0068,SS-MEN-0008,Maroon Silk T-Shirt,Indigo Row,Men's Wear,539900,89
+P0069,SS-ACC-0012,Beige Sunglasses,Northline,Accessories,79900,0
+P0070,SS-FTW-0013,Green Sandals,Brightloom,Footwear,649900,61
+P0071,SS-FTW-0014,Navy Running Shoes,Saanjh,Footwear,389900,35
+P0072,SS-KID-0014,Black Linen Shorts,Tara Lane,Kids,109900,69
+P0073,SS-WMN-0008,Beige Denim Saree,Saanjh,Women's Wear,689900,98
+P0074,SS-MEN-0009,Green Linen T-Shirt,Tara Lane,Men's Wear,379900,2
+P0075,SS-KID-0015,Blue Rayon T-Shirt,Indigo Row,Kids,99900,17
+P0076,SS-MEN-0010,Grey Denim Shirt,Tara Lane,Men's Wear,469900,44
+P0077,SS-MEN-0011,Beige Cotton Jeans,Urbano,Men's Wear,139900,10
+P0078,SS-WMN-0009,Grey Denim Saree,Coastal Thread,Women's Wear,159900,16
+P0079,SS-BTY-0008,Pink Face Wash,Saanjh,Beauty,189900,57
+P0080,SS-HOM-0011,Green Mug Set,Kesari,Home,279900,79
+P0081,SS-HOM-0012,Red Cushion Cover,Northline,Home,149900,21
+P0082,SS-WMN-0010,Black Linen Jeans,Indigo Row,Women's Wear,99900,89
+P0083,SS-KID-0016,Red Denim T-Shirt,Indigo Row,Kids,189900,111
+P0084,SS-MEN-0012,Red Denim Blazer,Northline,Men's Wear,599900,103
+P0085,SS-FTW-0015,Pink Sneakers,Saanjh,Footwear,289900,117
+P0086,SS-HOM-0013,Black Cushion Cover,Saanjh,Home,69900,40
+P0087,SS-FTW-0016,Beige Sneakers,Saanjh,Footwear,669900,52
+P0088,SS-BTY-0009,Beige Moisturiser,Coastal Thread,Beauty,59900,114
+P0089,SS-ACC-0013,Grey Watch,Northline,Accessories,469900,0
+P0090,SS-ACC-0014,Grey Belt,Saanjh,Accessories,89900,87
+P0091,SS-BTY-0010,White Lipstick,Saanjh,Beauty,219900,57
+P0092,SS-WMN-0011,Maroon Silk Jeans,Brightloom,Women's Wear,889900,0
+P0093,SS-FTW-0017,Navy Loafers,Brightloom,Footwear,649900,21
+P0094,SS-FTW-0018,Green Heels,Urbano,Footwear,649900,105
+P0095,SS-FTW-0019,Navy Sneakers,Coastal Thread,Footwear,309900,99
+P0096,SS-HOM-0014,Pink Bedsheet,Brightloom,Home,229900,25
+P0097,SS-BTY-0011,Beige Moisturiser,Saanjh,Beauty,339900,0
+P0098,SS-BTY-0012,Green Face Wash,Kesari,Beauty,209900,63
+P0099,SS-MEN-0013,Grey Linen Blazer,Coastal Thread,Men's Wear,209900,2
+P0100,SS-MEN-0014,Black Silk T-Shirt,Indigo Row,Men's Wear,179900,20
+P0101,SS-ACC-0015,Pink Watch,Indigo Row,Accessories,499900,62
+P0102,SS-WMN-0012,Pink Linen Top,Tara Lane,Women's Wear,409900,77
+P0103,SS-HOM-0015,Green Bedsheet,Brightloom,Home,359900,54
+P0104,SS-HOM-0016,Blue Towel Set,Indigo Row,Home,159900,108
+P0105,SS-HOM-0017,Beige Cushion Cover,Coastal Thread,Home,269900,43
+P0106,SS-FTW-0020,Red Loafers,Northline,Footwear,679900,50
+P0107,SS-HOM-0018,Blue Mug Set,Coastal Thread,Home,179900,91
+P0108,SS-FTW-0021,Beige Sandals,Brightloom,Footwear,139900,76
+P0109,SS-HOM-0019,Beige Bedsheet,Urbano,Home,89900,59
+P0110,SS-ACC-0016,Maroon Wallet,Saanjh,Accessories,309900,0
+P0111,SS-KID-0017,Black Denim Hoodie,Brightloom,Kids,179900,49
+P0112,SS-ACC-0017,Pink Sunglasses,Saanjh,Accessories,109900,31
+P0113,SS-WMN-0013,Black Silk Palazzo,Kesari,Women's Wear,899900,0
+P0114,SS-FTW-0022,Green Sandals,Urbano,Footwear,129900,0
+P0115,SS-KID-0018,Navy Silk Frock,Tara Lane,Kids,69900,53
+P0116,SS-WMN-0014,Black Rayon Saree,Northline,Women's Wear,809900,88
+P0117,SS-FTW-0023,White Running Shoes,Indigo Row,Footwear,299900,33
+P0118,SS-KID-0019,Beige Denim T-Shirt,Indigo Row,Kids,179900,10
+P0119,SS-KID-0020,Maroon Denim Frock,Coastal Thread,Kids,139900,26
+P0120,SS-HOM-0020,Black Mug Set,Saanjh,Home,139900,46
+P0121,SS-ACC-0018,Blue Watch,Urbano,Accessories,699900,73
+P0122,SS-BTY-0013,Green Moisturiser,Brightloom,Beauty,349900,78
+P0123,SS-WMN-0015,Red Rayon Palazzo,Tara Lane,Women's Wear,299900,93
+P0124,SS-ACC-0019,Blue Handbag,Brightloom,Accessories,559900,5
+P0125,SS-ACC-0020,Black Wallet,Tara Lane,Accessories,539900,54
+P0126,SS-WMN-0016,Pink Denim Saree,Tara Lane,Women's Wear,529900,35
+P0127,SS-KID-0021,Green Denim Hoodie,Tara Lane,Kids,69900,10
+P0128,SS-HOM-0021,Maroon Cushion Cover,Kesari,Home,389900,47
+P0129,SS-HOM-0022,Blue Mug Set,Brightloom,Home,149900,59
+P0130,SS-ACC-0021,Grey Watch,Kesari,Accessories,679900,48
+P0131,SS-ACC-0022,Beige Wallet,Brightloom,Accessories,99900,72
+P0132,SS-BTY-0014,Black Face Wash,Saanjh,Beauty,289900,117
+P0133,SS-ACC-0023,Black Sunglasses,Urbano,Accessories,279900,0
+P0134,SS-KID-0022,Black Cotton Hoodie,Coastal Thread,Kids,89900,18
+P0135,SS-FTW-0024,Pink Loafers,Tara Lane,Footwear,449900,94
+P0136,SS-FTW-0025,Beige Sneakers,Urbano,Footwear,609900,36
+P0137,SS-ACC-0024,Red Watch,Brightloom,Accessories,779900,31
+P0138,SS-MEN-0015,Navy Rayon Blazer,Saanjh,Men's Wear,379900,0
+P0139,SS-WMN-0017,Beige Cotton Kurta,Urbano,Women's Wear,639900,82
+P0140,SS-MEN-0016,Red Linen Jeans,Northline,Men's Wear,549900,107
+P0141,SS-BTY-0015,Red Face Wash,Urbano,Beauty,159900,101
+P0142,SS-KID-0023,White Rayon Shorts,Urbano,Kids,99900,15
+P0143,SS-WMN-0018,Navy Linen Kurta,Saanjh,Women's Wear,579900,23
+P0144,SS-MEN-0017,Maroon Rayon T-Shirt,Indigo Row,Men's Wear,179900,61
+P0145,SS-HOM-0023,Pink Towel Set,Northline,Home,289900,65
+P0146,SS-BTY-0016,Pink Lipstick,Urbano,Beauty,149900,4
+P0147,SS-FTW-0026,Maroon Heels,Indigo Row,Footwear,669900,92
+P0148,SS-MEN-0018,Navy Rayon Shirt,Saanjh,Men's Wear,209900,0
+P0149,SS-BTY-0017,Maroon Perfume,Coastal Thread,Beauty,269900,59
+P0150,SS-MEN-0019,Black Rayon Blazer,Northline,Men's Wear,259900,114
+P0151,SS-FTW-0027,Beige Loafers,Brightloom,Footwear,429900,13
+P0152,SS-FTW-0028,Green Loafers,Indigo Row,Footwear,409900,88
+P0153,SS-MEN-0020,Black Cotton Shirt,Brightloom,Men's Wear,439900,0
+P0154,SS-HOM-0024,Pink Cushion Cover,Brightloom,Home,69900,72
+P0155,SS-ACC-0025,Maroon Handbag,Coastal Thread,Accessories,629900,97
+P0156,SS-HOM-0025,Green Bedsheet,Northline,Home,289900,14
+P0157,SS-WMN-0019,Beige Linen Palazzo,Brightloom,Women's Wear,789900,109
+P0158,SS-MEN-0021,Grey Linen Jeans,Urbano,Men's Wear,439900,99
+P0159,SS-BTY-0018,Blue Perfume,Saanjh,Beauty,99900,98
+P0160,SS-KID-0024,Blue Linen Frock,Kesari,Kids,69900,52
+P0161,SS-WMN-0020,Blue Cotton Palazzo,Coastal Thread,Women's Wear,709900,49
+P0162,SS-FTW-0029,White Loafers,Kesari,Footwear,409900,42
+P0163,SS-MEN-0022,White Rayon T-Shirt,Indigo Row,Men's Wear,129900,35
+P0164,SS-ACC-0026,Beige Sunglasses,Kesari,Accessories,779900,28
+P0165,SS-KID-0025,Black Denim Hoodie,Saanjh,Kids,179900,63
+P0166,SS-MEN-0023,Maroon Rayon T-Shirt,Saanjh,Men's Wear,129900,0
+P0167,SS-WMN-0021,Green Denim Saree,Coastal Thread,Women's Wear,359900,64
+P0168,SS-WMN-0022,Maroon Rayon Saree,Brightloom,Women's Wear,669900,72
+P0169,SS-MEN-0024,Blue Silk Chinos,Brightloom,Men's Wear,99900,10
+P0170,SS-BTY-0019,Grey Moisturiser,Saanjh,Beauty,199900,54
+P0171,SS-MEN-0025,Blue Denim Chinos,Indigo Row,Men's Wear,229900,80
+P0172,SS-HOM-0026,Black Towel Set,Coastal Thread,Home,219900,32
+P0173,SS-BTY-0020,Pink Moisturiser,Brightloom,Beauty,59900,40
+P0174,SS-WMN-0023,White Cotton Dress,Northline,Women's Wear,509900,68
+P0175,SS-HOM-0027,Navy Towel Set,Tara Lane,Home,339900,83
+P0176,SS-WMN-0024,White Denim Kurta,Kesari,Women's Wear,259900,20
+P0177,SS-WMN-0025,Beige Silk Palazzo,Indigo Row,Women's Wear,709900,75
+P0178,SS-ACC-0027,Grey Belt,Brightloom,Accessories,579900,81
+P0179,SS-WMN-0026,Black Silk Top,Saanjh,Women's Wear,459900,102
+P0180,SS-BTY-0021,Navy Lipstick,Indigo Row,Beauty,239900,0
+P0181,SS-FTW-0030,Blue Sneakers,Kesari,Footwear,409900,10
+P0182,SS-BTY-0022,Beige Moisturiser,Urbano,Beauty,269900,102
+P0183,SS-FTW-0031,Red Running Shoes,Tara Lane,Footwear,369900,65
+P0184,SS-MEN-0026,Black Denim Chinos,Urbano,Men's Wear,149900,23
+P0185,SS-WMN-0027,Beige Silk Palazzo,Brightloom,Women's Wear,519900,21
+P0186,SS-KID-0026,Maroon Silk Frock,Urbano,Kids,199900,77
+P0187,SS-HOM-0028,Black Towel Set,Coastal Thread,Home,179900,0
+P0188,SS-KID-0027,Grey Linen Frock,Tara Lane,Kids,109900,0
+P0189,SS-KID-0028,Maroon Linen Frock,Saanjh,Kids,169900,11
+P0190,SS-BTY-0023,Navy Moisturiser,Kesari,Beauty,79900,107
+P0191,SS-ACC-0028,Pink Sunglasses,Saanjh,Accessories,649900,0
+P0192,SS-WMN-0028,Navy Silk Saree,Tara Lane,Women's Wear,249900,18
+P0193,SS-MEN-0027,Black Rayon Jeans,Urbano,Men's Wear,529900,114
+P0194,SS-ACC-0029,Grey Watch,Tara Lane,Accessories,269900,20
+P0195,SS-WMN-0029,Grey Linen Palazzo,Brightloom,Women's Wear,689900,53
+P0196,SS-ACC-0030,Beige Wallet,Indigo Row,Accessories,519900,101
+P0197,SS-WMN-0030,Red Denim Jeans,Northline,Women's Wear,889900,61
+P0198,SS-KID-0029,Beige Denim Hoodie,Coastal Thread,Kids,199900,68
+P0199,SS-WMN-0031,Grey Linen Saree,Indigo Row,Women's Wear,809900,83
+P0200,SS-HOM-0029,Pink Towel Set,Kesari,Home,89900,67

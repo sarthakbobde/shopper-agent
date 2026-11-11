@@ -11,7 +11,7 @@ Stopping after Phase 2 still leaves a complete project; voice and the second cli
 - [x] 🧑 **01 Gemini key and first call** — create the key in Google AI Studio, put it in `.env`, pick the model (ADR-009), one test call.
 
 ## Phase 1 — Text agent (the Copilot Studio rebuild)
-- [ ] 🤝 **02 Data and seed** — SQLite schema, fake Indian retail seed data, fuzzy product search.
+- [x] 🤝 **02 Data and seed** — SQLite schema, fake Indian retail seed data, fuzzy product search.
 - [ ] 🤝 **03 Tools and business rules** — four tools, spend tiers, stock flag, ₹ formatting, rating validation.
 - [ ] 🤝 **04 Agent loop and terminal chat** — hand-written Gemini function-calling loop, event log, `shopper chat`.
 - [ ] 🤝 **05 Eval harness** — 40 scripted conversations, tool-call accuracy, answer facts, containment.

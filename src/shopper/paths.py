@@ -28,3 +28,11 @@ def client_config_file(name: str) -> Path:
 
 def client_prompt_file(name: str) -> Path:
     return client_dir(name) / "prompt.md"
+
+
+def client_seed_dir(name: str) -> Path:
+    return client_dir(name) / "seed"  # fake data CSVs, committed (ADR-011)
+
+
+def client_db_file(name: str) -> Path:
+    return DATA / f"{name}.db"  # one SQLite database per client, git-ignored

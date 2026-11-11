@@ -21,13 +21,16 @@ Architecture Decision Records: what was decided, the options, and the consequenc
 | [007](#adr-007) | Engine separate from client config | Accepted | 2026-11-10 |
 | [008](#adr-008) | Fake data only while on the Gemini free tier | Accepted | 2026-11-10 |
 | [009](#adr-009) | Default model `gemini-3.5-flash-lite`; Step 05 keeps the fastest model that scores ≥ 90 % | Accepted | 2026-11-10 |
+| [010](#adr-010) | Money is stored as whole paise (integers), never floats | Accepted | 2026-11-10 |
+| [011](#adr-011) | Seed data: generated once by a fixed-seed script, committed as CSV, fully invented | Accepted | 2026-11-10 |
 
 ## Changes from the original plan
 
-None yet. When reality forces a change, add a row: topic, original plan, now, why, ADR.
+When reality forces a change, add a row: topic, original plan, now, why, ADR.
 
 | Topic | Original plan | Now | Why | ADR |
 |---|---|---|---|---|
+| `conversations` table | Created in Step 02 with the other tables | Created in Step 04 | Nothing writes to it until the agent loop exists; an empty table now would only be guessed at | none |
 
 ## Project log
 
@@ -37,6 +40,8 @@ None yet. When reality forces a change, add a row: topic, original plan, now, wh
 | 2026-11-10 | Step 00 done: uv package, `shopper doctor`, paths, client config with validation (`clients/shoppers_stop`), 15 tests, ruff, CI workflow. `doctor` reports `.env` and the key missing, as expected before Step 01. Nothing committed. |
 | 2026-11-10 | Step 00 committed (`78a3d3d`) and pushed to the public repo `sarthakbobde/shopper-agent`; first CI run passed. |
 | 2026-11-10 | Step 01 done: `google-genai` 3.0.0, `llm.py` (client, model list, ping, error messages), `shopper models` and `shopper ping`, 9 new tests (24 total). Key works; 4 models latency-tested; `gemini-3.5-flash-lite` chosen (ADR-009). Not committed. |
+| 2026-11-10 | Step 01 and two small fixes committed (`c0f1aab`) and pushed; CI passed. |
+| 2026-11-10 | Step 02 done: `db.py` (schema with CHECK rules, word-by-word product search, customer lookup, feedback with who and when), `seed.py`, fixed-seed generator and CSVs (50 customers, 200 products, 21 out of stock), `shopper seed / products / customers`, database line in `doctor`; 21 new tests (45 total). ADR-010, ADR-011. Not committed. |
 
 ## Template
 
@@ -245,3 +250,48 @@ Option 2 as the default, in `clients/shoppers_stop/client.yaml`. In Step 05 the 
 - The ping test is easy (one obvious tool); it proves speed and basic tool calling, not quality.
 - Switching model is a one-line config change.
 - Five calls from one place at one time are a rough guide; Step 05 measures p50/p95 properly.
+
+<a id="adr-010"></a>
+## ADR-010 — Money is stored as whole paise (integers), never floats
+**Status:** Accepted · **Date:** 2026-11-10 · **Step:** 02
+
+### Context
+Floating-point numbers cannot store most decimal fractions exactly: in Python `0.1 + 0.2` is
+`0.30000000000000004`. Prices, spends and tier thresholds must compare exactly (a customer at
+exactly ₹3,000 must land in Medium every time).
+
+### Options
+1. Floats in rupees — simple, but inexact.
+2. `Decimal` — exact, but every layer (SQLite, CSV, JSON to Gemini) needs care to keep it.
+3. **Integers in paise** (₹1,299.00 = `129900`).
+
+### Decision
+Option 3. Columns and fields end in `_paise` so the unit is never in doubt. Conversion to rupees
+happens only when text is shown to a person (Step 03's formatter).
+
+### Consequences
+- Exact comparisons and sums everywhere; SQLite stores them natively.
+- Thresholds in `client.yaml` stay in rupees for readability and are converted once when used.
+
+<a id="adr-011"></a>
+## ADR-011 — Seed data: generated once by a fixed-seed script, committed as CSV, fully invented
+**Status:** Accepted · **Date:** 2026-11-10 · **Step:** 02
+
+### Context
+The agent needs realistic data to search, and tests need the same data on every machine. The
+free-tier key may send prompts to Google's training (ADR-008), so the data must be fake.
+
+### Options
+1. Copy real Shoppers Stop products — real brands and prices we have no right to publish.
+2. Generate random data at test time — different on every run unless seeded, and invisible in review.
+3. **A script with `random.Random(42)` that writes CSVs, which are committed.**
+
+### Decision
+Option 3: `clients/shoppers_stop/seed/generate.py`. Rerunning it gives byte-identical files
+(checked with SHA-256). Names are common Indian names, emails use `example.com`, brands
+(Urbano, Kesari, Tara Lane …) are made up. The data deliberately includes customers at ₹2,999,
+₹3,000, ₹10,000 and ₹10,001, and about 10 % of products out of stock (21 of 200).
+
+### Consequences
+- Reviewers can read the data in the repo; tests check its properties.
+- Changing the data means editing the script and regenerating, never hand-editing a CSV.
