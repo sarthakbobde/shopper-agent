@@ -23,6 +23,7 @@ Architecture Decision Records: what was decided, the options, and the consequenc
 | [009](#adr-009) | Default model `gemini-3.5-flash-lite`; Step 05 keeps the fastest model that scores ≥ 90 % | Accepted | 2026-11-10 |
 | [010](#adr-010) | Money is stored as whole paise (integers), never floats | Accepted | 2026-11-10 |
 | [011](#adr-011) | Seed data: generated once by a fixed-seed script, committed as CSV, fully invented | Accepted | 2026-11-10 |
+| [012](#adr-012) | Tools return errors as data, mask personal data, and use a fixed list of escalation reasons | Accepted | 2026-11-11 |
 
 ## Changes from the original plan
 
@@ -42,6 +43,8 @@ When reality forces a change, add a row: topic, original plan, now, why, ADR.
 | 2026-11-10 | Step 01 done: `google-genai` 3.0.0, `llm.py` (client, model list, ping, error messages), `shopper models` and `shopper ping`, 9 new tests (24 total). Key works; 4 models latency-tested; `gemini-3.5-flash-lite` chosen (ADR-009). Not committed. |
 | 2026-11-10 | Step 01 and two small fixes committed (`c0f1aab`) and pushed; CI passed. |
 | 2026-11-10 | Step 02 done: `db.py` (schema with CHECK rules, word-by-word product search, customer lookup, feedback with who and when), `seed.py`, fixed-seed generator and CSVs (50 customers, 200 products, 21 out of stock), `shopper seed / products / customers`, database line in `doctor`; 21 new tests (45 total). ADR-010, ADR-011. Not committed. |
+| 2026-11-11 | Step 02 committed (`a9ed961`) and pushed; CI passed. |
+| 2026-11-11 | Step 03 done: `money.py` (₹ with Indian grouping), `rules.py` (spend tier, stock label, rating check), `tools/` with the four tools, a registry and `run_tool`, `escalations` table, `shopper tool` to run a tool by hand, UTF-8 console output for ₹ on Windows; 55 new tests (100 total). ADR-012. Not committed. |
 
 ## Template
 
@@ -295,3 +298,36 @@ Option 3: `clients/shoppers_stop/seed/generate.py`. Rerunning it gives byte-iden
 ### Consequences
 - Reviewers can read the data in the repo; tests check its properties.
 - Changing the data means editing the script and regenerating, never hand-editing a CSV.
+
+<a id="adr-012"></a>
+## ADR-012 — Tools return errors as data, mask personal data, and use a fixed list of escalation reasons
+**Status:** Accepted · **Date:** 2026-11-11 · **Step:** 03
+
+### Context
+The model calls tools with whatever it understood from the user: a rating of 6, a misspelt
+argument, a reason we never planned for. A tool that raises an exception would end the
+conversation; one that quietly accepts bad input would store wrong data. Tools also see customer
+records, and whatever they return is sent to Gemini.
+
+### Options
+1. Raise exceptions and let the agent loop decide — every caller must know every error.
+2. **`run_tool` always returns a dict; problems come back as `{"error": "..."}`.**
+3. Validate only in the prompt — the Copilot Studio approach, which drifted.
+
+### Decision
+Option 2. `ToolError` marks a problem the model can fix ("rating must be a whole number from 1 to
+5"); `run_tool` turns it, an unknown tool, wrong arguments, or an unexpected exception into an
+error result, and nothing is written. Unexpected failures are logged with the traceback and
+reported as `"<tool> failed: <ErrorType>"`, which the prompt counts toward "a tool failed twice".
+
+Two related rules:
+- **Personal data:** `customer_insights` returns the email masked (`s***@example.com`); several
+  matches return only names, cities and IDs. The model gets what it needs to answer, no more.
+- **Escalation reasons** are a fixed list (`user_request`, `refund_or_complaint`, `tool_failure`,
+  `out_of_scope`), enforced in code and by a CHECK in the `escalations` table, so Step 12 can count
+  *why* conversations were not contained.
+
+### Consequences
+- The agent loop in Step 04 never needs a try/except around a tool.
+- Error text is written for the model to repeat, so it must stay short and plain.
+- A new escalation reason needs a code change, a schema change and an ADR; that is intended.

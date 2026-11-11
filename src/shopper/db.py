@@ -46,7 +46,19 @@ CREATE TABLE IF NOT EXISTS feedback (
     comment         TEXT NOT NULL DEFAULT '',
     submitted_at    TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS escalations (
+    escalation_id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id     TEXT REFERENCES customers (customer_id),
+    conversation_id TEXT,
+    reason          TEXT NOT NULL CHECK (reason IN ('user_request', 'refund_or_complaint',
+                                                    'tool_failure', 'out_of_scope')),
+    summary         TEXT NOT NULL,
+    created_at      TEXT NOT NULL
+);
 """
+
+ESCALATION_REASONS = ["user_request", "refund_or_complaint", "tool_failure", "out_of_scope"]
 
 AgeGroup = Literal["18-24", "25-34", "35-44", "45-54", "55+"]
 
@@ -170,6 +182,24 @@ def add_feedback(
     return cursor.lastrowid
 
 
+def add_escalation(
+    conn: sqlite3.Connection,
+    reason: str,
+    summary: str,
+    customer_id: str | None = None,
+    conversation_id: str | None = None,
+) -> int:
+    """Save a handover to a human, and return its ID. `reason` must be one of ESCALATION_REASONS."""
+    created_at = datetime.now(UTC).isoformat(timespec="seconds")
+    cursor = conn.execute(
+        "INSERT INTO escalations (customer_id, conversation_id, reason, summary, created_at)"
+        " VALUES (?, ?, ?, ?, ?)",
+        (customer_id, conversation_id, reason, summary, created_at),
+    )
+    conn.commit()
+    return cursor.lastrowid
+
+
 # ---- reading ---------------------------------------------------------------------------------
 
 
@@ -215,6 +245,14 @@ def find_products(conn: sqlite3.Connection, query: str, limit: int = 5) -> list[
     matches = [row_to_product(row) for row in rows]
     matches.sort(key=lambda product: (product_rank(product, query_key), product.name))
     return matches[:limit]
+
+
+def get_customer(conn: sqlite3.Connection, customer_id: str) -> Customer | None:
+    """Exact lookup by ID (any case), used once a search has narrowed several matches to one."""
+    row = conn.execute(
+        "SELECT * FROM customers WHERE customer_id = ? COLLATE NOCASE", (customer_id.strip(),)
+    ).fetchone()
+    return row_to_customer(row) if row else None
 
 
 def find_customers(conn: sqlite3.Connection, query: str, limit: int = 5) -> list[Customer]:

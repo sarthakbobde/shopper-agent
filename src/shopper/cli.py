@@ -6,6 +6,7 @@
     shopper seed          build the client's database from its seed CSVs              (Step 02)
     shopper products Q    search products the way the agent will                      (Step 02)
     shopper customers Q   find customers by name or email                             (Step 02)
+    shopper tool NAME J   run one agent tool with JSON arguments; print what the model sees (Step 03)
 
 Each command only parses its options and calls a function in the package, so the real work
 can be tested without the command line. Imports are inside the handlers on purpose: they keep
@@ -15,6 +16,7 @@ can be tested without the command line. Imports are inside the handlers on purpo
 import argparse
 import logging
 import sys
+import warnings
 
 from shopper.errors import UserError
 
@@ -80,6 +82,8 @@ def open_client_db(client: str):
 
 def cmd_products(args: argparse.Namespace) -> None:
     from shopper.db import find_products
+    from shopper.money import format_inr
+    from shopper.rules import stock_label
 
     conn = open_client_db(args.client)
     products = find_products(conn, args.query, limit=args.limit)
@@ -87,16 +91,18 @@ def cmd_products(args: argparse.Namespace) -> None:
     if not products:
         print("no products found")
         return
-    # Plain rupees.paise for now; the proper ₹ formatter arrives with the tools in Step 03.
     for p in products:
-        price = f"{p.price_paise // 100}.{p.price_paise % 100:02d}"
-        stock = "OUT OF STOCK" if p.stock_qty == 0 else f"{p.stock_qty} in stock"
-        print(f"{p.code:<13} {p.name:<32} {p.brand:<15} Rs {price:>9}  {stock}")
+        price = format_inr(p.price_paise)
+        print(f"{p.code:<13} {p.name:<32} {p.brand:<15} {price:>9}  {stock_label(p.stock_qty)}")
 
 
 def cmd_customers(args: argparse.Namespace) -> None:
+    from shopper.config import load_client
     from shopper.db import find_customers
+    from shopper.money import format_inr
+    from shopper.rules import spend_tier
 
+    tiers = load_client(args.client).spend_tiers
     conn = open_client_db(args.client)
     customers = find_customers(conn, args.query)
     conn.close()
@@ -104,8 +110,31 @@ def cmd_customers(args: argparse.Namespace) -> None:
         print("no customers found")
         return
     for c in customers:
-        spend = c.total_spend_paise // 100
-        print(f"{c.customer_id}  {c.name:<20} {c.email:<32} {c.city:<10} {c.age_group:<6} spend Rs {spend}")
+        spend = format_inr(c.total_spend_paise)
+        tier = spend_tier(c.total_spend_paise, tiers)
+        print(f"{c.customer_id}  {c.name:<20} {c.email:<32} {c.city:<10} {spend:>10}  {tier}")
+
+
+def cmd_tool(args: argparse.Namespace) -> None:
+    import json
+
+    from shopper.config import load_client
+    from shopper.tools import ToolContext, run_tool
+
+    try:
+        tool_args = json.loads(args.json)
+    except json.JSONDecodeError as error:
+        raise UserError(f'arguments must be JSON, e.g. \'{{"query": "blue sneakers"}}\': {error}') from None
+    if not isinstance(tool_args, dict):
+        raise UserError('arguments must be a JSON object, e.g. \'{"query": "blue sneakers"}\'')
+
+    conn = open_client_db(args.client)
+    ctx = ToolContext(conn=conn, config=load_client(args.client), conversation_id="cli")
+    try:
+        result = run_tool(args.name, tool_args, ctx)
+    finally:
+        conn.close()
+    print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
 # ---- parser ------------------------------------------------------------------------------------
@@ -144,10 +173,23 @@ def build_parser() -> argparse.ArgumentParser:
     customers.add_argument("--client", default="shoppers_stop", help="client folder under clients/")
     customers.set_defaults(handler=cmd_customers)
 
+    tool = commands.add_parser("tool", help="run one agent tool and print the JSON the model sees")
+    tool.add_argument("name", help="search_products, customer_insights, record_feedback or escalate_to_human")
+    tool.add_argument("json", nargs="?", default="{}", help="""JSON, e.g. '{"query": "kurta"}'""")
+    tool.add_argument("--client", default="shoppers_stop", help="client folder under clients/")
+    tool.set_defaults(handler=cmd_tool)
+
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
+    # google-genai's types.py has an invalid escape in a docstring; Python warns each time it compiles
+    # the file, which is every run when PYTHONDONTWRITEBYTECODE is set. The warning is theirs, not ours.
+    warnings.filterwarnings("ignore", message=r"invalid escape sequence", category=SyntaxWarning)
+    # Windows consoles default to cp1252, which has no ₹ or Hindi letters; print UTF-8 everywhere.
+    for stream in [sys.stdout, sys.stderr]:
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     args = build_parser().parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(message)s")
     if not args.verbose:

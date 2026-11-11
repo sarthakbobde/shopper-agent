@@ -219,3 +219,10 @@ Filled in as steps finish.
   shopper would rather see close matches. Step 03's `search_products` tool should fall back to fewer
   words and say the results are near matches. Normalising text to letters and digits handled case,
   spaces and hyphens in one place and, as a side effect, made LIKE wildcards (`%`, `_`) impossible.
+- **Step 03:** the near-match fallback made "red linen kurta" return linen kurtas, but the order of
+  words to drop matters: in English the item comes last, so earlier words are dropped first.
+  Returning both ready-to-say text (`₹1,399`, `only 3 left`) and raw numbers (`price_paise`) lets the
+  model repeat facts instead of computing them. Two Windows surprises: the console's cp1252 encoding
+  cannot print `₹` (the CLI now writes UTF-8), and with `PYTHONDONTWRITEBYTECODE` set the SDK
+  recompiles on every run and prints its own `SyntaxWarning` (filtered in the CLI). `shopper tool`
+  shows exactly what the model will see, without a key.
